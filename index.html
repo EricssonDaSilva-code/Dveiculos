@@ -9,8 +9,7 @@
     
     <style>
         :root {
-            --primary: #007BFF; /* Azul Vibrante e Moderno */
-            --primary-dark: #0056b3;
+            --primary: #007BFF; /* Azul Vibrante */
             --secondary: #121212; /* Preto Sofisticado */
             --bg-light: #ffffff;
             --bg-off: #f8f9fa;
@@ -40,7 +39,6 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .logo { font-size: 1.5rem; color: #fff; letter-spacing: 1px; }
@@ -52,7 +50,7 @@
         /* HERO SECTION */
         .hero {
             height: 70vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.4)), 
                         url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
             display: flex;
             align-items: center;
@@ -74,11 +72,10 @@
             border-radius: 4px;
             display: inline-block;
             transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0,123,255,0.3);
         }
         .btn-main:hover { background: #fff; color: var(--secondary); transform: translateY(-3px); }
 
-        /* CATALOGO - 9 CARROS */
+        /* CATALOGO */
         .catalog { padding: 80px 5%; background: var(--bg-off); }
         .section-header { text-align: center; margin-bottom: 60px; }
         .section-header h2 { font-size: 2.5rem; position: relative; padding-bottom: 15px; }
@@ -102,20 +99,14 @@
         }
 
         .car-card:hover { transform: translateY(-10px); border-color: var(--primary); }
-
         .car-img { width: 100%; height: 230px; object-fit: cover; }
         .car-info { padding: 25px; }
-        .car-info h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--secondary); }
+        .car-info h3 { font-size: 1.1rem; margin-bottom: 10px; }
         .price { font-size: 1.6rem; color: var(--primary); font-weight: 900; margin-bottom: 15px; display: block; }
         
-        .car-meta { display: flex; justify-content: space-between; border-top: 1px solid #eee; padding-top: 15px; font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
+        .car-meta { display: flex; justify-content: space-between; border-top: 1px solid #eee; padding-top: 15px; font-size: 0.8rem; color: var(--text-muted); }
 
-        /* CTAs e REVIEWS */
-        .reviews { padding: 80px 5%; background: var(--secondary); color: #fff; }
-        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        .review-card { background: #1a1a1a; padding: 30px; border-radius: 8px; border-left: 4px solid var(--primary); }
-
-        /* WHATSAPP FLOAT */
+        /* WHATSAPP */
         .whatsapp {
             position: fixed; bottom: 30px; right: 30px;
             background: #25D366; width: 60px; height: 60px; border-radius: 50%;
@@ -123,7 +114,6 @@
             z-index: 1000; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        /* FOOTER */
         footer { background: #000; color: #fff; padding: 60px 5%; border-top: 4px solid var(--primary); }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
         
@@ -144,31 +134,35 @@
 
     <section class="hero">
         <div class="hero-content">
-            <p style="text-transform: uppercase; letter-spacing: 3px; font-weight: 700; color: var(--primary);">Oportunidades Únicas</p>
+            <p style="text-transform: uppercase; letter-spacing: 3px; font-weight: 700; color: var(--primary);">Gravataí - RS</p>
             <h1>O CARRO DOS SEUS SONHOS <br>ESTÁ AQUI.</h1>
-            <p>Veículos selecionados com garantia de procedência e as melhores taxas de Gravataí.</p>
-            <a href="#catalogo" class="btn-main">CONFERIR ESTOQUE ATUALIZADO</a>
+            <a href="#catalogo" class="btn-main">CONFERIR ESTOQUE</a>
         </div>
     </section>
 
     <section class="catalog" id="catalogo">
         <div class="section-header">
-            <p style="color: var(--primary); font-weight: 700;">CURADORIA D VEÍCULOS</p>
             <h2>DESTAQUES DO DIA</h2>
         </div>
 
         <div class="car-grid">
             <script>
                 const cars = [
-                    { name: "BMW 320i M Sport", price: "R$ 289.900", year: "2023", km: "12.000", img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=600" },
-                    { name: "Porsche Macan GTS", price: "R$ 549.000", year: "2022", km: "8.500", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600" },
-                    { name: "Mustang Mach 1", price: "R$ 415.000", year: "2021", km: "5.200", img: "https://images.unsplash.com/photo-1584345604482-8135833950d7?q=80&w=600" },
-                    { name: "Range Rover Velar", price: "R$ 430.000", year: "2023", km: "0", img: "https://images.unsplash.com/photo-1506469717960-433cebe3f181?q=80&w=600" },
-                    { name: "Mercedes-Benz C300", price: "R$ 310.000", year: "2022", km: "15.000", img: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=600" },
-                    { name: "Audi RS6 Avant", price: "R$ 890.000", year: "2023", km: "2.100", img: "https://images.unsplash.com/photo-1606148270554-9769399899f8?q=80&w=600" },
-                    { name: "Jaguar F-Type", price: "R$ 385.000", year: "2020", km: "22.000", img: "https://images.unsplash.com/photo-1594502184342-2e12f877aa73?q=80&w=600" },
-                    { name: "Toyota Hilux SRX", price: "R$ 265.000", year: "2024", km: "0", img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=600" },
-                    { name: "Classic 1967 Mustang", price: "R$ 290.000", year: "1967", km: "Clássico", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=600" }
+                    { 
+    name: "Lamborghini Urus V8 Bi-Turbo", 
+    price: "R$ 2.400.000", 
+    year: "2024", 
+    km: "0", 
+    img: "https://images.pexels.com/photos/13627443/pexels-photo-13627443.jpeg?auto=compress&cs=tinysrgb&w=1200" 
+},
+                    { name: "BMW M3 Competition", price: "R$ 615.900", year: "2023", km: "5.000", img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=800" },
+                    { name: "Porsche 911 Carrera S", price: "R$ 840.000", year: "2022", km: "2.100", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800" },
+                    { name: "Ford Mustang Mach 1", price: "R$ 410.000", year: "2021", km: "8.500", img: "https://images.unsplash.com/photo-1547038577-da80abbc4f19?auto=format&fit=crop&q=80&w=1200" },
+                    { name: "Mercedes-Benz G63 AMG", price: "R$ 1.850.000", year: "2023", km: "0", img: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?q=80&w=800" },
+                    { name: "Classic Mustang 1967", price: "R$ 320.000", year: "1967", km: "Restaurado", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=800" },
+                    { name: "Range Rover Velar", price: "R$ 455.000", year: "2023", km: "0", img: "https://images.unsplash.com/photo-1506469717960-433cebe3f181?q=80&w=800" },
+                    { name: "Toyota Hilux SRX", price: "R$ 275.000", year: "2024", km: "0", img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=800" },
+                    { name: "Chevrolet Camaro SS Clássico", price: "R$ 295.000", year: "1969", km: "Colecionador", img: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800" }
                 ];
 
                 cars.forEach(car => {
@@ -181,9 +175,8 @@
                                 <div class="car-meta">
                                     <span>📅 ${car.year}</span>
                                     <span>📍 ${car.km}</span>
-                                    <span>🕹️ AUTOMÁTICO</span>
                                 </div>
-                                <a href="#" class="btn-main" style="width:100%; text-align:center; margin-top:20px; padding:10px;">TENHO INTERESSE</a>
+                                <a href="https://wa.me/5551986088767" class="btn-main" style="width:100%; text-align:center; margin-top:15px; font-size: 0.8rem;">NEGOCIAR AGORA</a>
                             </div>
                         </div>
                     `);
@@ -192,36 +185,19 @@
         </div>
     </section>
 
-    <section class="reviews">
-        <div class="section-header">
-            <h2 style="color: #fff;">O QUE DIZEM NOSSOS CLIENTES</h2>
-            <div style="width: 50px; height: 3px; background: var(--primary); margin: 15px auto;"></div>
-        </div>
-        <div class="review-grid">
-            <div class="review-card">
-                <p>"Atendimento impecável! O pessoal da D Veículos me ajudou em todo o processo de financiamento."</p>
-                <p style="margin-top: 15px; font-weight: 700; color: var(--primary);">- Roberto Almeida</p>
-            </div>
-            <div class="review-card">
-                <p>"Carros de extrema qualidade e procedência. Fiz a troca do meu usado e pagaram o preço justo."</p>
-                <p style="margin-top: 15px; font-weight: 700; color: var(--primary);">- Juliana Costa</p>
-            </div>
-        </div>
-    </section>
-
     <footer>
         <div class="footer-grid">
             <div>
                 <div class="logo">D <span>VEÍCULOS</span></div>
-                <p style="margin-top: 20px; color: #888;">A melhor experiência na compra do seu próximo veículo em Gravataí e região metropolitana.</p>
+                <p style="margin-top: 15px; color: #888;">Referência em Gravataí. Veículos premium com garantia e procedência.</p>
             </div>
             <div>
                 <h4>LOCALIZAÇÃO</h4>
-                <p style="color: #888; margin-top: 15px;">Av. Dorival Cândido Luz de Oliveira, 4500<br>Gravataí - RS</p>
+                <p style="color: #888; margin-top: 10px;">Av. Dorival Cândido Luz de Oliveira, 4500<br>Gravataí - RS</p>
             </div>
             <div>
-                <h4>CONTATO</h4>
-                <p style="color: #888; margin-top: 15px;">📞 (51) 3484.0000<br>💬 (51) 98608.8767</p>
+                <h4>WHATSAPP</h4>
+                <p style="color: #888; margin-top: 10px;">(51) 98608.8767</p>
             </div>
         </div>
     </footer>
