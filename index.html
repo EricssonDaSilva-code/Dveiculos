@@ -2,188 +2,178 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D Veículos | O Seu Próximo Carro está aqui</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>D Veículos | Qualidade em Gravataí</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --d-blue: #0066FF; /* Azul vibrante da logo */
-            --d-red: #E31C23;  /* Vermelho da logo */
-            --bg-light: #FFFFFF;
-            --text-dark: #1A1A1A;
-            --gray-light: #F4F7F9;
+            --d-blue: #0066FF;
+            --d-red: #E31C23;
+            --bg-body: #fdfdfd;
+            --text-main: #222;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Open Sans', sans-serif; background-color: var(--bg-light); color: var(--text-dark); }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body { 
+            font-family: 'Open Sans', sans-serif; 
+            background-color: var(--bg-body); 
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
 
-        /* HEADER PREMIUM */
+        /* HEADER RESPONSIVO */
         header {
-            background: white;
-            padding: 15px 5%;
+            background: #fff;
+            height: 70px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            padding: 0 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky; top: 0; z-index: 1000;
         }
 
-        .logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.8rem; cursor: pointer; }
-        .logo .d-char { color: var(--d-blue); }
-        .logo .v-word { color: var(--d-red); }
+        .logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.4rem; white-space: nowrap; }
+        .logo .d { color: var(--d-blue); }
+        .logo .v { color: var(--d-red); }
 
-        nav a { text-decoration: none; color: var(--text-dark); font-weight: 600; margin-left: 25px; transition: 0.3s; font-size: 0.85rem; }
-        nav a:hover { color: var(--d-blue); }
+        /* Menu para Desktop */
+        nav { display: none; } /* Escondido por padrão (Mobile-First) */
+        
+        @media (min-width: 992px) {
+            nav { display: flex; gap: 20px; }
+            nav a { text-decoration: none; color: #333; font-weight: 600; font-size: 0.85rem; }
+        }
 
-        /* NOVO BANNER IMPACTANTE */
+        /* Botão Menu Celular */
+        .mobile-menu-icon {
+            display: block;
+            font-size: 1.8rem;
+            color: var(--d-blue);
+            cursor: pointer;
+        }
+        @media (min-width: 992px) { .mobile-menu-icon { display: none; } }
+
+        /* BANNER REALMENTE RESPONSIVO */
         .hero {
             position: relative;
-            height: 75vh;
-            background: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+            width: 100%;
+            height: 50vh; /* Altura menor no celular */
+            min-height: 400px;
+            background: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200') no-repeat center center;
+            background-size: cover;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            padding: 0 8%;
+            padding: 20px;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+        @media (min-width: 992px) {
+            .hero { height: 70vh; padding: 0 8%; background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1920'); }
         }
 
-        .hero-content { position: relative; z-index: 2; max-width: 600px; }
-        .hero-content h1 { font-family: 'Montserrat', sans-serif; font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; color: var(--text-dark); }
-        .hero-content h1 span.blue { color: var(--d-blue); }
-        .hero-content h1 span.red { color: var(--d-red); }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0.95), rgba(255,255,255,0.7), transparent);
+        }
+
+        .hero-content { position: relative; z-index: 2; width: 100%; max-width: 500px; }
+        .hero-content h1 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 1.8rem; /* Menor no celular */
+            line-height: 1.2; 
+            margin-bottom: 15px; 
+        }
+        @media (min-width: 768px) { .hero-content h1 { font-size: 3rem; } }
 
         .btn-cta {
             background: var(--d-blue);
             color: white;
-            padding: 18px 40px;
+            padding: 15px 30px;
             text-decoration: none;
             font-weight: 700;
-            border-radius: 4px;
+            border-radius: 5px;
             display: inline-block;
-            transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(0,102,255,0.2);
+            width: 100%; /* Botão largo no celular */
+            text-align: center;
         }
-        .btn-cta:hover { background: var(--d-red); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(227,28,35,0.2); }
+        @media (min-width: 768px) { .btn-cta { width: auto; } }
 
-        /* ESTOQUE - 9 CARROS */
-        .section-padding { padding: 80px 5%; }
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .section-header h2 { font-family: 'Montserrat', sans-serif; font-size: 2.2rem; margin-bottom: 10px; }
-        .line { width: 80px; height: 5px; background: var(--d-red); margin: 0 auto; }
-
-        .car-grid {
+        /* GRID DE CARROS MOBILE-FIRST */
+        .container { padding: 40px 5%; }
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr; /* 1 coluna no celular */
+            gap: 20px;
         }
+        @media (min-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } } /* 2 colunas tablet */
+        @media (min-width: 1024px) { .grid { grid-template-columns: 1fr 1fr 1fr; } } /* 3 colunas PC */
 
-        .car-card {
+        .card {
             background: white;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: 0.4s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             border: 1px solid #eee;
         }
-        .car-card:hover { transform: translateY(-10px); border-color: var(--d-blue); }
 
-        .car-img-box { position: relative; height: 220px; overflow: hidden; }
-        .car-img-box img { width: 100%; height: 100%; object-fit: cover; }
-        .badge { position: absolute; top: 15px; left: 15px; background: var(--d-red); color: white; padding: 5px 12px; font-weight: 700; font-size: 0.7rem; border-radius: 3px; }
-
-        .car-info { padding: 25px; }
-        .car-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; color: var(--text-dark); }
-        .car-price { font-size: 1.8rem; font-weight: 900; color: var(--d-blue); margin-bottom: 15px; display: block; }
+        .card-img { width: 100%; height: 200px; object-fit: cover; }
+        .card-body { padding: 20px; }
+        .card-body h3 { font-size: 1.1rem; margin-bottom: 5px; }
+        .card-price { color: var(--d-blue); font-weight: 900; font-size: 1.4rem; display: block; margin-bottom: 15px; }
         
-        .car-specs { 
-            display: flex; 
-            justify-content: space-between; 
-            padding-top: 15px; 
-            border-top: 1px solid #f0f0f0; 
-            font-size: 0.8rem; 
-            color: #777; 
+        .card-footer { 
+            display: flex; justify-content: space-between; 
+            font-size: 0.75rem; color: #777; 
+            padding-top: 15px; border-top: 1px solid #f0f0f0; 
         }
 
-        /* AVALIAÇÕES ABAIXO */
-        .reviews-section { background: var(--gray-light); padding: 80px 5%; }
-        .review-card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
-        .review-user { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
-        .user-avatar { width: 50px; height: 50px; border-radius: 50%; background: #ddd; }
-        .stars { color: #FFB800; margin-bottom: 10px; }
-
-        /* WHATSAPP */
-        .wa-float {
-            position: fixed; bottom: 30px; right: 30px;
-            background: #25D366; width: 60px; height: 60px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 999;
+        /* WHATSAPP FIXO */
+        .whatsapp {
+            position: fixed; bottom: 20px; right: 20px;
+            background: #25D366; width: 60px; height: 60px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1100;
         }
-
-        footer { background: #121212; color: white; padding: 60px 5% 30px; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">
-            <span class="d-char">D</span> <span class="v-word">VEÍCULOS</span>
-        </div>
+        <div class="logo"><span class="d">D</span> <span class="v">VEÍCULOS</span></div>
         <nav>
-            <a href="#estoque">ESTOQUE</a>
+            <a href="#">ESTOQUE</a>
             <a href="#">FINANCIAMENTO</a>
-            <a href="#">AVALIE SEU CARRO</a>
             <a href="#">CONTATO</a>
         </nav>
+        <div class="mobile-menu-icon">☰</div>
     </header>
 
     <section class="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 style="border-left: 8px solid var(--d-blue); padding-left: 20px;">
-                O SEU PRÓXIMO CARRO ESTÁ NA <br>
-                <span class="blue">D</span> <span class="red">VEÍCULOS</span>.
-            </h1>
-            <p style="font-size: 1.2rem; margin-bottom: 30px; color: #555;">
-                Confiança, transparência e as melhores taxas de Gravataí. 
-                Venha conferir nosso estoque atualizado.
-            </p>
-            <a href="#estoque" class="btn-cta">VER OFERTAS</a>
+            <p style="color: var(--d-red); font-weight: 700; margin-bottom: 5px;">GRAVATAÍ - RS</p>
+            <h1>O SEU PRÓXIMO CARRO ESTÁ NA <span style="color: var(--d-blue)">D</span> VEÍCULOS.</h1>
+            <a href="#estoque" class="btn-cta">VER 9 OFERTAS</a>
         </div>
     </section>
 
-    <section class="section-padding" id="estoque">
-        <div class="section-header">
-            <h2>Nossas Ofertas</h2>
-            <div class="line"></div>
-        </div>
-
-        <div class="car-grid">
+    <div class="container" id="estoque">
+        <h2 style="text-align:center; margin-bottom: 30px; font-family: Montserrat;">Estoque em Destaque</h2>
+        <div class="grid">
             <script>
-                const models = [
-                    "Chevrolet Tracker Premier", "Toyota Corolla Altis", "VW Nivus Highline",
-                    "Jeep Renegade Longitude", "Honda HR-V Touring", "Fiat Fastback Limited",
-                    "Hyundai HB20 Ultimate", "Nissan Kicks Exclusive", "Ford Territory Titan"
-                ];
-                
-                for(let i=0; i<9; i++) {
+                for(let i=1; i<=9; i++) {
                     document.write(`
-                        <div class="car-card">
-                            <div class="car-img-box">
-                                <span class="badge">DESTAQUE</span>
-                                <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=60&w=600" alt="Carro">
-                            </div>
-                            <div class="car-info">
-                                <div class="car-title">${models[i]}</div>
-                                <span class="car-price">R$ 119.900</span>
-                                <div class="car-specs">
-                                    <span>📅 2024</span>
-                                    <span>📍 0 KM</span>
-                                    <span>🕹️ AUTO</span>
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=600" class="card-img" alt="Carro">
+                            <div class="card-body">
+                                <h3>Modelo Veículo ${i}</h3>
+                                <span class="card-price">R$ 89.900</span>
+                                <div class="card-footer">
+                                    <span>📅 2023</span>
+                                    <span>📍 15.000 KM</span>
+                                    <span>🕹️ AUTOMÁTICO</span>
                                 </div>
                             </div>
                         </div>
@@ -191,44 +181,15 @@
                 }
             </script>
         </div>
-    </section>
+    </div>
 
-    <section class="reviews-section">
-        <div class="section-header">
-            <h2>Avaliações do Google</h2>
-            <div class="line" style="background: var(--d-blue);"></div>
-        </div>
-        <div class="car-grid">
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"Excelente atendimento, equipe muito prestativa. Comprei meu carro e correu tudo bem."</p>
-                <p style="margin-top: 15px; font-weight: 700;">- Carlos Eduardo</p>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"Melhor preço de Gravataí. Avaliaram meu usado muito bem na troca. Recomendo!"</p>
-                <p style="margin-top: 15px; font-weight: 700;">- Maria Fernanda</p>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"Processo de financiamento rápido e sem burocracia. Saí de carro novo no mesmo dia."</p>
-                <p style="margin-top: 15px; font-weight: 700;">- João Victor</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div style="text-align: center;">
-            <div class="logo" style="margin-bottom: 20px;">
-                <span class="d-char" style="color: white;">D</span> <span class="v-word" style="color: var(--d-red);">VEÍCULOS</span>
-            </div>
-            <p>Av. Dorival Cândido Luz de Oliveira, 4500 - Gravataí/RS</p>
-            <p style="margin-top: 20px; color: #666; font-size: 0.8rem;">&copy; 2026 D Veículos. Todos os direitos reservados.</p>
-        </div>
+    <footer style="background:#111; color:#fff; padding: 40px 5%; text-align: center;">
+        <p>Av. Dorival Cândido Luz de Oliveira, 4500 - Gravataí</p>
+        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.6;">&copy; 2026 D Veículos</p>
     </footer>
 
-    <a href="https://wa.me/5551986088767" class="wa-float" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30" alt="WhatsApp">
+    <a href="https://wa.me/5551986088767" class="whatsapp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
     </a>
 
 </body>
