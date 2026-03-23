@@ -2,193 +2,231 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>D Veículos | Qualidade em Gravataí</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D Veículos | Qualidade e Confiança em Gravataí</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --d-blue: #0066FF;
-            --d-red: #E31C23;
-            --bg-body: #fdfdfd;
-            --text-main: #222;
+            --primary: #007BFF; /* Azul Vibrante e Moderno */
+            --primary-dark: #0056b3;
+            --secondary: #121212; /* Preto Sofisticado */
+            --bg-light: #ffffff;
+            --bg-off: #f8f9fa;
+            --text-dark: #1a1a1a;
+            --text-muted: #6c757d;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Open Sans', sans-serif; 
-            background-color: var(--bg-body); 
-            color: var(--text-main);
+            background-color: var(--bg-light); 
+            color: var(--text-dark);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* HEADER RESPONSIVO */
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-weight: 900; }
+
+        /* HEADER */
         header {
-            background: #fff;
-            height: 70px;
+            background: var(--secondary);
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 5%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky; top: 0; z-index: 1000;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.4rem; white-space: nowrap; }
-        .logo .d { color: var(--d-blue); }
-        .logo .v { color: var(--d-red); }
+        .logo { font-size: 1.5rem; color: #fff; letter-spacing: 1px; }
+        .logo span { color: var(--primary); }
 
-        /* Menu para Desktop */
-        nav { display: none; } /* Escondido por padrão (Mobile-First) */
-        
-        @media (min-width: 992px) {
-            nav { display: flex; gap: 20px; }
-            nav a { text-decoration: none; color: #333; font-weight: 600; font-size: 0.85rem; }
-        }
+        nav a { color: #fff; text-decoration: none; font-weight: 600; margin-left: 20px; font-size: 0.8rem; transition: 0.3s; }
+        nav a:hover { color: var(--primary); }
 
-        /* Botão Menu Celular */
-        .mobile-menu-icon {
-            display: block;
-            font-size: 1.8rem;
-            color: var(--d-blue);
-            cursor: pointer;
-        }
-        @media (min-width: 992px) { .mobile-menu-icon { display: none; } }
-
-        /* BANNER REALMENTE RESPONSIVO */
+        /* HERO SECTION */
         .hero {
-            position: relative;
-            width: 100%;
-            height: 50vh; /* Altura menor no celular */
-            min-height: 400px;
-            background: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200') no-repeat center center;
-            background-size: cover;
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
             display: flex;
             align-items: center;
-            padding: 20px;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 5%;
         }
 
-        @media (min-width: 992px) {
-            .hero { height: 70vh; padding: 0 8%; background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1920'); }
-        }
+        .hero-content h1 { font-size: clamp(2rem, 8vw, 4rem); line-height: 1; margin-bottom: 20px; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 30px; font-weight: 300; }
 
-        .hero-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0.95), rgba(255,255,255,0.7), transparent);
-        }
-
-        .hero-content { position: relative; z-index: 2; width: 100%; max-width: 500px; }
-        .hero-content h1 { 
-            font-family: 'Montserrat', sans-serif; 
-            font-size: 1.8rem; /* Menor no celular */
-            line-height: 1.2; 
-            margin-bottom: 15px; 
-        }
-        @media (min-width: 768px) { .hero-content h1 { font-size: 3rem; } }
-
-        .btn-cta {
-            background: var(--d-blue);
-            color: white;
-            padding: 15px 30px;
+        .btn-main {
+            background: var(--primary);
+            color: #fff;
+            padding: 15px 40px;
             text-decoration: none;
             font-weight: 700;
-            border-radius: 5px;
+            border-radius: 4px;
             display: inline-block;
-            width: 100%; /* Botão largo no celular */
-            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,123,255,0.3);
         }
-        @media (min-width: 768px) { .btn-cta { width: auto; } }
+        .btn-main:hover { background: #fff; color: var(--secondary); transform: translateY(-3px); }
 
-        /* GRID DE CARROS MOBILE-FIRST */
-        .container { padding: 40px 5%; }
-        .grid {
+        /* CATALOGO - 9 CARROS */
+        .catalog { padding: 80px 5%; background: var(--bg-off); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; position: relative; padding-bottom: 15px; }
+        .section-header h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: var(--primary); }
+
+        .car-grid {
             display: grid;
-            grid-template-columns: 1fr; /* 1 coluna no celular */
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
-        @media (min-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } } /* 2 colunas tablet */
-        @media (min-width: 1024px) { .grid { grid-template-columns: 1fr 1fr 1fr; } } /* 3 colunas PC */
 
-        .card {
-            background: white;
-            border-radius: 10px;
+        .car-card {
+            background: #fff;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: var(--shadow);
+            transition: 0.4s;
             border: 1px solid #eee;
         }
 
-        .card-img { width: 100%; height: 200px; object-fit: cover; }
-        .card-body { padding: 20px; }
-        .card-body h3 { font-size: 1.1rem; margin-bottom: 5px; }
-        .card-price { color: var(--d-blue); font-weight: 900; font-size: 1.4rem; display: block; margin-bottom: 15px; }
+        .car-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+
+        .car-img { width: 100%; height: 230px; object-fit: cover; }
+        .car-info { padding: 25px; }
+        .car-info h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--secondary); }
+        .price { font-size: 1.6rem; color: var(--primary); font-weight: 900; margin-bottom: 15px; display: block; }
         
-        .card-footer { 
-            display: flex; justify-content: space-between; 
-            font-size: 0.75rem; color: #777; 
-            padding-top: 15px; border-top: 1px solid #f0f0f0; 
+        .car-meta { display: flex; justify-content: space-between; border-top: 1px solid #eee; padding-top: 15px; font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
+
+        /* CTAs e REVIEWS */
+        .reviews { padding: 80px 5%; background: var(--secondary); color: #fff; }
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+        .review-card { background: #1a1a1a; padding: 30px; border-radius: 8px; border-left: 4px solid var(--primary); }
+
+        /* WHATSAPP FLOAT */
+        .whatsapp {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #25D366; width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 1000; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        /* WHATSAPP FIXO */
-        .whatsapp {
-            position: fixed; bottom: 20px; right: 20px;
-            background: #25D366; width: 60px; height: 60px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1100;
-        }
+        /* FOOTER */
+        footer { background: #000; color: #fff; padding: 60px 5%; border-top: 4px solid var(--primary); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        
+        @media (max-width: 768px) { nav { display: none; } }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo"><span class="d">D</span> <span class="v">VEÍCULOS</span></div>
+        <div class="logo">D <span>VEÍCULOS</span></div>
         <nav>
-            <a href="#">ESTOQUE</a>
+            <a href="#catalogo">ESTOQUE</a>
+            <a href="#">AVALIAÇÃO</a>
             <a href="#">FINANCIAMENTO</a>
             <a href="#">CONTATO</a>
         </nav>
-        <div class="mobile-menu-icon">☰</div>
     </header>
 
     <section class="hero">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <p style="color: var(--d-red); font-weight: 700; margin-bottom: 5px;">GRAVATAÍ - RS</p>
-            <h1>O SEU PRÓXIMO CARRO ESTÁ NA <span style="color: var(--d-blue)">D</span> VEÍCULOS.</h1>
-            <a href="#estoque" class="btn-cta">VER 9 OFERTAS</a>
+            <p style="text-transform: uppercase; letter-spacing: 3px; font-weight: 700; color: var(--primary);">Oportunidades Únicas</p>
+            <h1>O CARRO DOS SEUS SONHOS <br>ESTÁ AQUI.</h1>
+            <p>Veículos selecionados com garantia de procedência e as melhores taxas de Gravataí.</p>
+            <a href="#catalogo" class="btn-main">CONFERIR ESTOQUE ATUALIZADO</a>
         </div>
     </section>
 
-    <div class="container" id="estoque">
-        <h2 style="text-align:center; margin-bottom: 30px; font-family: Montserrat;">Estoque em Destaque</h2>
-        <div class="grid">
+    <section class="catalog" id="catalogo">
+        <div class="section-header">
+            <p style="color: var(--primary); font-weight: 700;">CURADORIA D VEÍCULOS</p>
+            <h2>DESTAQUES DO DIA</h2>
+        </div>
+
+        <div class="car-grid">
             <script>
-                for(let i=1; i<=9; i++) {
+                const cars = [
+                    { name: "BMW 320i M Sport", price: "R$ 289.900", year: "2023", km: "12.000", img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=600" },
+                    { name: "Porsche Macan GTS", price: "R$ 549.000", year: "2022", km: "8.500", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600" },
+                    { name: "Mustang Mach 1", price: "R$ 415.000", year: "2021", km: "5.200", img: "https://images.unsplash.com/photo-1584345604482-8135833950d7?q=80&w=600" },
+                    { name: "Range Rover Velar", price: "R$ 430.000", year: "2023", km: "0", img: "https://images.unsplash.com/photo-1506469717960-433cebe3f181?q=80&w=600" },
+                    { name: "Mercedes-Benz C300", price: "R$ 310.000", year: "2022", km: "15.000", img: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=600" },
+                    { name: "Audi RS6 Avant", price: "R$ 890.000", year: "2023", km: "2.100", img: "https://images.unsplash.com/photo-1606148270554-9769399899f8?q=80&w=600" },
+                    { name: "Jaguar F-Type", price: "R$ 385.000", year: "2020", km: "22.000", img: "https://images.unsplash.com/photo-1594502184342-2e12f877aa73?q=80&w=600" },
+                    { name: "Toyota Hilux SRX", price: "R$ 265.000", year: "2024", km: "0", img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=600" },
+                    { name: "Classic 1967 Mustang", price: "R$ 290.000", year: "1967", km: "Clássico", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=600" }
+                ];
+
+                cars.forEach(car => {
                     document.write(`
-                        <div class="card">
-                            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=600" class="card-img" alt="Carro">
-                            <div class="card-body">
-                                <h3>Modelo Veículo ${i}</h3>
-                                <span class="card-price">R$ 89.900</span>
-                                <div class="card-footer">
-                                    <span>📅 2023</span>
-                                    <span>📍 15.000 KM</span>
+                        <div class="car-card">
+                            <img src="${car.img}" class="car-img" alt="${car.name}">
+                            <div class="car-info">
+                                <h3>${car.name}</h3>
+                                <span class="price">${car.price}</span>
+                                <div class="car-meta">
+                                    <span>📅 ${car.year}</span>
+                                    <span>📍 ${car.km}</span>
                                     <span>🕹️ AUTOMÁTICO</span>
                                 </div>
+                                <a href="#" class="btn-main" style="width:100%; text-align:center; margin-top:20px; padding:10px;">TENHO INTERESSE</a>
                             </div>
                         </div>
                     `);
-                }
+                });
             </script>
         </div>
-    </div>
+    </section>
 
-    <footer style="background:#111; color:#fff; padding: 40px 5%; text-align: center;">
-        <p>Av. Dorival Cândido Luz de Oliveira, 4500 - Gravataí</p>
-        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.6;">&copy; 2026 D Veículos</p>
+    <section class="reviews">
+        <div class="section-header">
+            <h2 style="color: #fff;">O QUE DIZEM NOSSOS CLIENTES</h2>
+            <div style="width: 50px; height: 3px; background: var(--primary); margin: 15px auto;"></div>
+        </div>
+        <div class="review-grid">
+            <div class="review-card">
+                <p>"Atendimento impecável! O pessoal da D Veículos me ajudou em todo o processo de financiamento."</p>
+                <p style="margin-top: 15px; font-weight: 700; color: var(--primary);">- Roberto Almeida</p>
+            </div>
+            <div class="review-card">
+                <p>"Carros de extrema qualidade e procedência. Fiz a troca do meu usado e pagaram o preço justo."</p>
+                <p style="margin-top: 15px; font-weight: 700; color: var(--primary);">- Juliana Costa</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="logo">D <span>VEÍCULOS</span></div>
+                <p style="margin-top: 20px; color: #888;">A melhor experiência na compra do seu próximo veículo em Gravataí e região metropolitana.</p>
+            </div>
+            <div>
+                <h4>LOCALIZAÇÃO</h4>
+                <p style="color: #888; margin-top: 15px;">Av. Dorival Cândido Luz de Oliveira, 4500<br>Gravataí - RS</p>
+            </div>
+            <div>
+                <h4>CONTATO</h4>
+                <p style="color: #888; margin-top: 15px;">📞 (51) 3484.0000<br>💬 (51) 98608.8767</p>
+            </div>
+        </div>
     </footer>
 
-    <a href="https://wa.me/5551986088767" class="whatsapp">
+    <a href="https://wa.me/5551986088767" class="whatsapp" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
     </a>
 
